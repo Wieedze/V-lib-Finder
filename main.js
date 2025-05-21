@@ -8,13 +8,13 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; OpenStreetMap contributors",
 }).addTo(map);
 
-const showVelibStation = (container, name, mechanicals, numdocksavailable, capacity, ebikes, coordonnees_geo) => {
+const showVelibStation = (container, name, mechanical, numdocksavailable, capacity, ebike, coordonnees_geo) => {
     const stationHTML = `
             <div class="station-card">
                 <h2>Station : ${name}</h2>
                 <p><strong>Capacité totale :</strong> ${capacity} docks</p>
-                <p><strong>Vélos mécaniques :</strong> ${mechanicals}</p>
-                <p><strong>Vélos électriques :</strong> ${ebikes}</p>
+                <p><strong>Vélos mécaniques :</strong> ${mechanical}</p>
+                <p><strong>Vélos électriques :</strong> ${ebike}</p>
                 <p><strong>Places libres :</strong> ${numdocksavailable}</p>
                 <p><strong>Coordonnées :</strong> ${coordonnees_geo}</p>
             </div>
@@ -33,10 +33,10 @@ fetch(url)
             showVelibStation(
                 station_container,
                 fields.name,
-                fields.mechanicals,
+                fields.mechanical,
                 fields.numdocksavailable,
                 fields.capacity,
-                fields.ebikes,
+                fields.ebike,
                 fields.coordonnees_geo
             );
 
@@ -47,8 +47,8 @@ fetch(url)
                     .bindPopup(`
                     <b>${fields.name}</b><br>
                     ${fields.capacity} docks<br>
-                    ${fields.mechanicals} vélos mécaniques<br>
-                    ${fields.ebikes} vélos électriques<br>
+                    ${fields.mechanical} vélos mécaniques<br>
+                    ${fields.ebike} vélos électriques<br>
                     ${fields.numdocksavailable} places libres
                 `);
             }
